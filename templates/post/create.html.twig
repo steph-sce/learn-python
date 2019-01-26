@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formPost 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div class="container">
+  {% if editMode %}
+  <h1>Modification d'un post</h1>
+  {% else %}
+  <h1>Création d'un post</h1>
+  {% endif %}
+
+{{ form_start(formPost) }}
+{{ form_row(formPost.title, {'attr': {'placeholder': 'Titre du post'}}) }}
+{{ form_row(formPost.content, {'attr': {'placeholder': 'Contenu du post'}}) }}
+{{ form_row(formPost.link_video, {'attr': {'placeholder': 'Lien de la vidéo'}}) }}
+{{ form_row(formPost.post_type, {'attr': {'placeholder': 'Type du post: vidéo ou post'}}) }}
+{{ form_row(formPost.duration, {'attr': {'placeholder': 'Durée du post'}}) }}
+{{ form_row(formPost.price, {'attr': {'placeholder': 'Prix du post'}}) }}
+{{ form_row(formPost.status, {'attr': {'placeholder': 'Status du post: open ou close'}}) }}
+
+<button type="submit" class="btn btn-outline-primary">
+  {% if editMode %}
+    Enregistrer
+  {% else %}
+    Ajouter le post
+  {% endif %}
+</button>
+
+{{ form_end(formPost) }}
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+<a href="{{path('post_create')}}" class="btn">Ajouter un post</a>
+  <div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">Type post</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Durée</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Contenu</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Lien vidéo</th>
+        <th scope="col">Image vidéo</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in pagination %}
+      <tr>
+        <th scope="row">{{ post.id }}</th>
+        <td>{{ post.date|date('d/m/Y') }}</td>
+        <td>{{ post.postType }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.duration }}</td>
+        <td>{{ post.price }}</td>
+        <td>{{ post.content }}</td>
+        <td>{{ post.status }}</td>
+        <td>{{ post.linkVideo }}</td>
+        <td><img class="card-img-top" src={{ post.image }} alt="Photo du post." height="80px"></td>
+        <td><a href="{{ path('video', {'id': post.id})}}"><i class="far fa-eye"></i></a></td>
+        <td><a href="{{ path('post_edit', {'id': post.id})}}"><i class="far fa-edit"></i></a></td>
+        <td><a href="{{ path('post_delete', {'id': post.id})}}"><i class="far fa-trash-alt"></i></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="navigation">
+  {{ knp_pagination_render(pagination) }}
+</div>
+</div>
+{% endblock %}

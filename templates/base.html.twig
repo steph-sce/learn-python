@@ -2,55 +2,60 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.2.1/cerulean/bootstrap.min.css" integrity="sha256-+bQz7eIgKKdqb01MnRwn68VjgbSbwY3wTSwlbcPCUHA=" rel="stylesheet"/>
-    <title>
-      {% block title %}Welcome!{% endblock %}
-    </title>
-    	{% block stylesheets %}{% endblock %}
-  </head>
-<body>
-	<!-- NAVBAR -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Learn Python</a>
-		<button aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarColor02" data-toggle="collapse" type="button">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarColor02">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-          <a class="nav-link" href="{{ path('initiation')}}">Initiation</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('improvement')}}">Perfectionnement</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('registration')}}">Inscription</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('login')}}">Connexion</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('post_create')}}">Création</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('post_show')}}">Dashboard</a>
-        </li>
-			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" placeholder="Search" type="text">
-					<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-				</form>
-			</div>
-		</nav>
-		<!-- END NAVBAR-->
-		<div class="container">
-			{% block body %}{% endblock %}
-		</div>
-		{% block javascripts %}{% endblock %}
-	</body>
-</html>
-    
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.2.1/cerulean/bootstrap.min.css" integrity="sha256-+bQz7eIgKKdqb01MnRwn68VjgbSbwY3wTSwlbcPCUHA=" rel="stylesheet"/>
+        <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" rel="stylesheet">
+          <title>
+            {% block title %}Welcome!{% endblock %}
+          </title>
+          {% block stylesheets %}{% endblock %}
+        </head>
+        <body>
+          <!-- NAVBAR -->
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ path('accueil')}}">Learn Python</a>
+            <button aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarColor02" data-toggle="collapse" type="button">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor02">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{ path('accueil')}}">Accueil<span class="sr-only">(current)</span>
+                  </a>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ path('initiation')}}">Initiation</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ path('improvement')}}">Perfectionnement</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{path('security_registration')}}">Inscription</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ path('post_create')}}">Création</a>
+									</li>
+									{% if not app.user %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ path('security_login')}}">Connexion</a>
+									</li>
+									{% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ path('security_logout')}}">Déconnexion</a>
+									</li>
+									{% endif %}
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" placeholder="Search" type="text">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Rechercher</button>
+                  </form>
+                </div>
+              </nav>
+              <!-- END NAVBAR-->
+              {% block body %}{% endblock %}
+              <footer class="footer">
+                <h1>FOOTER</h1>
+              </footer>
+              {% block javascripts %}{% endblock %}
+            </body>
+          </html>
+        
