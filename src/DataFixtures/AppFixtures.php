@@ -2,12 +2,12 @@
 
 namespace App\DataFixtures;
 
+use \Faker;
+use App\Entity\Category;
+use App\Entity\Image;
+use App\Entity\Post;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use \Faker;
-use App\Entity\Post;
-use App\Entity\Image;
-use App\Entity\Category;
 
 
 class AppFixtures extends Fixture
