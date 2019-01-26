@@ -29,28 +29,6 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("/login", name="login")
-     */
-    public function loginAction()
-    {
-        return $this->render('front/login.html.twig', [
-            'title' => 'login',
-        ]);
-    }
-
-    /**
-     * @Route("/inscription/", name="registration")
-     */
-    public function registrationAction()
-    {
-        $params = array(
-            'title' => 'inscription',
-        );
-
-        return $this->render('front/inscription.html.twig', $params);
-    }
-
-    /**
      * @Route("/video/{id}", name="video")
      */
     public function videoAction(Post $id)
