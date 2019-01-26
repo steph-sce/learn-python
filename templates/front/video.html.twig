@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h1>MON ASIDE</h1>
+      <h5>MES AUTRES VIDEOS</h5>
+      <h5>MES AUTRES VIDEOS</h5>
+      <h5>MES AUTRES VIDEOS</h5>
+      <h5>MES AUTRES VIDEOS</h5>
+      <h5>MES AUTRES VIDEOS</h5>
+      <h5>MES AUTRES VIDEOS</h5>
+    </div>
+    <div class="col-sm">
+      <h2>{{ video.title }}</h2>
+      <iframe width="560" height="315" src="{{ video.linkVideo }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <h4>{{ video.content }}</h4>   
+    </div>
+  </div>
+</div>
+{% endblock %}
