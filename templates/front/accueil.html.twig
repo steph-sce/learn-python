@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello FrontController!{% endblock %}
+{% block body %}
+  <section>
+    <h4>
+      Python est un langage de programmation. Il est l'un des langages de programmation les plus intéressants du moment. Facile à apprendre, python est souvent utilisé en exemple lors de l'apprentissage de la programmation. Vous trouverez sur ce site des cours / tuto informatiques qui vous enseigneront les bases pour la compréhension de ce langage. Pour les développeurs plus expérimentés le site vous indiquera quelques astuces pour vos projets.
+		</h4>
+  </section>
+  <section class="text-center">
+    <h1>Dernières publications</h1>
+  </section>
+  <div class="container">
+			<div class="row">
+				{% for post in posts|slice(2,3) %}
+				<div class="card" style="width: 18rem;">
+						<img src={{ post.image }} class="card-img-top" alt={{ post.title }}>
+						<div class="card-body">
+							<h5 class="card-title">{{ post.title }}</h5>
+							<p class="card-text">{{ post.content }}</p>
+								{% for cat in post.category %}
+									{% if cat.parent != null %}
+										<time datetime="2016-1-1">{{ post.date|date('d/m/Y')}}</time><br>
+										<span class="badge badge-primary">Prix: {{ post.price }} €</span><br>
+										<strong> {{ cat.name }} </strong>
+										<h6>Niveau: {{ cat.parent.name }}</h6>
+									{% endif %}
+								{% endfor %}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+  {% endblock %}
