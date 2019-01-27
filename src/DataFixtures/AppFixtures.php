@@ -17,6 +17,7 @@ class AppFixtures extends Fixture
         // On configure dans quelles langues nous voulons nos données
         $faker = Faker\Factory::create('fr_FR');
 
+        // Categorie de niveau NULL
         $categoryOne = new Category();
         $categoryOne->setName('Initiation')
                     ->setParent(null);
@@ -25,8 +26,45 @@ class AppFixtures extends Fixture
         $categoryTwo->setName('Perfectionnement')
                     ->setParent(null);
 
+        // Categories initiation
+        $categoryInitOne = new Category();
+        $categoryInitOne->setName('Introduction')
+                    ->setParent($categoryOne);
+
+        $categoryInitTwo = new Category();
+        $categoryInitTwo->setName('Les structures de données')
+                    ->setParent($categoryOne);
+        
+        $categoryInitThree = new Category();
+        $categoryInitThree->setName('Les classes')
+                    ->setParent($categoryOne);        
+
+        // Categories perfectionnement
+        $categoryPerfOne = new Category();
+        $categoryPerfOne->setName('Lambda')
+                    ->setParent($categoryTwo);
+
+        $categoryPerfTwo = new Category();
+        $categoryPerfTwo->setName('Compréhension de liste')
+                    ->setParent($categoryTwo);
+        
+        $categoryPerfThree = new Category();
+        $categoryPerfThree->setName('Décorateur')
+                    ->setParent($categoryTwo);
+
+        // Categorie de niveau NULL        
         $manager->persist($categoryOne);
-        $manager->persist($categoryTwo);        
+        $manager->persist($categoryTwo);    
+        
+        // Categories initiation        
+        $manager->persist($categoryInitOne);        
+        $manager->persist($categoryInitTwo);        
+        $manager->persist($categoryInitThree); 
+        
+        // Categories perfectionnement        
+        $manager->persist($categoryPerfOne);        
+        $manager->persist($categoryPerfTwo);        
+        $manager->persist($categoryPerfThree);        
 
         for ($i = 0; $i < 10; $i++) {
             $post = new Post();
@@ -47,16 +85,18 @@ class AppFixtures extends Fixture
 
             $category = new Category();
             $nameCategorie = array(
-                'Les bases',
-                'Les classes',
-                'Les objets',
-                'La syntaxe',
-                'L\'environnement',
-                'La structure',
-                'Le déploiement',
-                'La gestion d\'erreur',
-                'Le language',
-                'L\'apprentissage'
+                'Données et variables',
+                'Noms de variables et mots réservés',
+                'Le point sur les chaînes de caractères',
+                'Le point sur les listes',
+                'Utilité des classes',
+                'Définition d’une classe élémentaire',
+                'Expressions lambda',
+                'Métaprogrammation – expressions lambda',
+                'Les listes (première approche).',
+                'Contrôle du flux – utilisation d’une liste simple',
+                'Créer un décorateur python',
+                'Plusieurs décorateurs'
             );
             $category->setName($nameCategorie[$i]);
              

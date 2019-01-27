@@ -1,7 +1,29 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}{% endblock %}
-
 {% block body %}
-<h1>initiation</h1>
+  <div class="container">
+    <div class="row">
+      <div class="card" style="width: 18rem;">
+        <img alt="card-img-top" class="card-img-top" src="https://picsum.photos/200/300?image=0"/>
+        <a href=""><h6>Introduction</h6></a>        
+        <p>Nombre de vidéo(s) :
+          <strong>{{ initiation|length }}</strong>
+        </p>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img alt="card-img-top" class="card-img-top" src="https://picsum.photos/200/300?image=1"/>
+        <h6>Les structures de données</h6>
+        <p>Nombre de vidéo(s) :
+          <strong>{{ structure|length }}</strong>
+        </p>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img alt="card-img-top" class="card-img-top" src="https://picsum.photos/200/300?image=2"/>
+        <h6>Les classes</h6>
+        <p>Nombre de vidéo(s) :
+          <strong>{{ classe|length }}</strong>
+        </p>
+      </div>
+    </div>
+  </div>
 {% endblock %}

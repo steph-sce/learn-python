@@ -19,8 +19,7 @@
       <img src={{ post.image }} class="card-img-top" alt={{ post.title }}>
       <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        <p class="card-text">{{ post.content}}</p>
         <time datetime="2016-1-1">{{ post.date|date('d/m/Y')}}</time><br>
         <span class="badge badge-primary">Prix: {{ post.price }} €</span>
         <a href="{{ path('video',{ 'id': post.id })}}" class="btn btn-primary btn-sm">Accéder à la vidéo</a>

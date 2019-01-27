@@ -31,14 +31,14 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{path('security_registration')}}">Inscription</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ path('post_create')}}">Création</a>
-									</li>
-									{% if not app.user %}
+                  {% if not app.user %}
                   <li class="nav-item">
                     <a class="nav-link" href="{{ path('security_login')}}">Connexion</a>
 									</li>
-									{% else %}
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ path('post_create')}}">Création</a>
+									</li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ path('security_logout')}}">Déconnexion</a>
 									</li>

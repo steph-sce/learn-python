@@ -3,11 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Repository\CategoryRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class FrontController extends AbstractController
 {
@@ -16,12 +15,12 @@ class FrontController extends AbstractController
      */
     public function indexAction(PostRepository $repository)
     {
-        $posts = $repository->findAll();
+        $posts      = $repository->findAll();
         $categories = $repository->findAll();
 
         $params = array(
-            'title' => 'accueil',
-            'posts' => $posts,
+            'title'      => 'accueil',
+            'posts'      => $posts,
             'categories' => $categories,
         );
 
@@ -33,7 +32,7 @@ class FrontController extends AbstractController
      */
     public function videoAction(Post $id)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em    = $this->getDoctrine()->getManager();
         $video = $em->find(Post::class, $id);
 
         $params = array(
@@ -47,17 +46,28 @@ class FrontController extends AbstractController
     /**
      * @Route("/initiation/", name="initiation")
      */
-    public function initiationAction()
+    public function initiationAction(CategoryRepository $repository)
     {
-        // $posts = $repository->findAll();
+        // Categorie Introduction
+        $initiation = $repository->findBy(array('name' => 'Introduction'));
+        $childrenInit = $repository->findBy(array('parent' => $initiation));
 
-        // $params = array(
-        //     'title' => 'initiation',
-        //     'posts' => $posts
-        // );
+        // Categorie Les structures de données
+        $structureData = $repository->findBy(array('name' => 'Les structures de données'));
+        $childrenStruct = $repository->findBy(array('parent' => $structureData));
 
-        // return $this->render('front/initiation.html.twig', $params);
-        return $this->render('front/initiation.html.twig');
+        // Categorie Les classes
+        $classes = $repository->findBy(array('name' => 'Les classes'));
+        $childrenClass = $repository->findBy(array('parent' => $classes));
+
+        $params = array(
+            'title'    => 'initiation',
+            'initiation' => $childrenInit,
+            'structure' => $childrenStruct,
+            'classe' => $childrenClass
+        );
+
+        return $this->render('front/initiation.html.twig', $params);
     }
 
     /**
@@ -83,13 +93,13 @@ class FrontController extends AbstractController
     // public function searchAction(Request $request)
     // {
     //     $em = $this->getDoctrine()->getManager();
- 
+
     //     $form = $request->query->all('form');
     //     $search = $form['search'];
-        
+
     //     $resultats = $em->getRepository(Post::class)->find($search);
     //     // Ici on utilise une requête créée dans le GeneralRepository
- 
+
     //     return ['search' => $search, 'resultats' => $resultats];
     // }
 }
