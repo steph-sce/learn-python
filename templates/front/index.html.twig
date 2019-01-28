@@ -19,15 +19,14 @@
       <img src={{ post.image }} class="card-img-top" alt={{ post.title }}>
       <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
-        <p class="card-text">{{ post.content}}</p>
         <time datetime="2016-1-1">{{ post.date|date('d/m/Y')}}</time><br>
         <span class="badge badge-primary">Prix: {{ post.price }} €</span>
-        <a href="{{ path('video',{ 'id': post.id })}}" class="btn btn-primary btn-sm">Accéder à la vidéo</a>
         {% for cat in post.category %}
-          <strong>Titre: {{ cat.name }}</strong>
-          <p>Niveau: {{ cat.parent.name }}</p>
+        <span class="badge badge-success">Titre: {{ cat.name }}</span>
+        <span class="badge badge-light">Niveau: {{ cat.parent.name }}</span>
         {% endfor %}
       </div>
+        <a href="{{ path('video',{ 'id': post.id })}}" class="btn btn-primary btn-sm">Accéder à la vidéo</a>
     </div>
     {% endfor %}
   </div>

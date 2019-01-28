@@ -73,33 +73,27 @@ class FrontController extends AbstractController
     /**
      * @Route("/perfectionnement/", name="improvement")
      */
-    public function improvementAction()
+    public function improvementAction(CategoryRepository $repository)
     {
-        // $posts = $repository->findAll();
+        // Categorie Lambda
+        $lambda = $repository->findBy(array('name' => 'Introduction'));
+        $childrenLambda = $repository->findBy(array('parent' => $lambda));
 
-        // $params = array(
-        //     'title' => 'perfectionnement',
-        //     'posts' => $posts
-        // );
+        // Categorie Compréhension de liste
+        $list = $repository->findBy(array('name' => 'Compréhension de liste'));
+        $childrenList = $repository->findBy(array('parent' => $list));
 
-        // return $this->render('front/improvement.html.twig', $params);
-        return $this->render('front/improvement.html.twig');
+        // Categorie Decorateur
+        $decorator = $repository->findBy(array('name' => 'Decorateur'));
+        $childrenDecorator = $repository->findBy(array('parent' => $decorator));
+
+        $params = array(
+            'title'    => 'initiation',
+            'lambda' => $childrenLambda,
+            'list' => $childrenList,
+            'decorator' => $childrenDecorator
+        );
+
+        return $this->render('front/improvement.html.twig', $params);
     }
-
-    // /**
-    //  * @Route("/resultats/", name="search_results")
-    //  * @Template("@learn-python/App/templates/base.html.twig")
-    //  */
-    // public function searchAction(Request $request)
-    // {
-    //     $em = $this->getDoctrine()->getManager();
-
-    //     $form = $request->query->all('form');
-    //     $search = $form['search'];
-
-    //     $resultats = $em->getRepository(Post::class)->find($search);
-    //     // Ici on utilise une requête créée dans le GeneralRepository
-
-    //     return ['search' => $search, 'resultats' => $resultats];
-    // }
 }

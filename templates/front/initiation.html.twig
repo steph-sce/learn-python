@@ -2,10 +2,11 @@
 {% block title %}{% endblock %}
 {% block body %}
   <div class="container">
+    <h1 class="text-center">Bienvenue dans la catégorie Initiation</h1>
     <div class="row">
       <div class="card" style="width: 18rem;">
         <img alt="card-img-top" class="card-img-top" src="https://picsum.photos/200/300?image=0"/>
-        <a href=""><h6>Introduction</h6></a>        
+        <a href=""><h6>Introduction</h6></a>   
         <p>Nombre de vidéo(s) :
           <strong>{{ initiation|length }}</strong>
         </p>
@@ -13,6 +14,9 @@
       <div class="card" style="width: 18rem;">
         <img alt="card-img-top" class="card-img-top" src="https://picsum.photos/200/300?image=1"/>
         <h6>Les structures de données</h6>
+        <pre>
+          {{ dump(structure) }}
+        </pre>
         <p>Nombre de vidéo(s) :
           <strong>{{ structure|length }}</strong>
         </p>
