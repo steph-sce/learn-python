@@ -13,4 +13,4 @@ Projet 2 - Ecole multimédia
 9. php bin/console doctrine:fixtures:load (pour les fixtures)
 10. php bin/console server:run
 
-### [Lien vers mon Trello](https://trello.com/b/L7O7Nl4Z/learn-python:target="_blank")
+### [Lien vers mon Trello](https://trello.com/b/L7O7Nl4Z/learn-python){:target="_blank"}
