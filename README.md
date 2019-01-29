@@ -18,8 +18,5 @@ Projet 2 - Ecole multimédia
 
 ### [Lien vers mon Trello](https://trello.com/b/L7O7Nl4Z/learn-python)
 
-
-### [Lien vers mon Trello](https://trello.com/b/L7O7Nl4Z/learn-python)
-
 ### Schéma BDD :
 ![bdd](https://user-images.githubusercontent.com/19578148/51945299-9c374f00-241e-11e9-8678-307c5faef208.PNG)
